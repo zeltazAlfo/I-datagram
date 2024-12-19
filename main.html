@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partenaria</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #ff4e50, #f9d423);
+            color: #ffffff;
+            padding: 20px;
+            min-height: 100vh;
+            margin :0;
+            padding: 0%;
+        }
+
+        /* Navigation bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Section styles */
+        section {
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        .slogan {
+            text-align: center;
+            margin-bottom: 10%;
+        }
+
+        .slogan h1 {
+            font-size: 48px;
+            color: #000000;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .slogan hr {
+            width: 80%;
+            margin: 0 auto 20px auto;
+            border: none;
+            border-top: 2px solid #000000;
+        }
+
+        .slogan p {
+            font-size: 18px;
+            color: #000000;
+        }
+
+        .slogan .btn-login {
+            display: inline-block;
+            margin-top: 20px;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .slogan .btn-login:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation menu 
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#collaborations">Collaborations</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>-->
+
+    <!-- Slogan Section -->
+    <section class="slogan">
+        <h1>Your Gateway to Smarter Partnerships</h1>
+        <hr>
+        <p>Unlock the power of collaboration with advanced tools and insights.</p>
+        <a href="login.html" class="btn-login">Log In</a>
+    </section>
+
+    <!-- Footer -->
+
+</body>
+
+</html>
